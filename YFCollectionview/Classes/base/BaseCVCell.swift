@@ -1,33 +1,33 @@
 
 import UIKit
-public class BaseCVCell: UICollectionViewCell {
+open class BaseCVCell: UICollectionViewCell {
     ///容器宽
-    public   var containerViewWidth:CGFloat {
+    open   var containerViewWidth:CGFloat {
         get{
             return  self.cellWidth-SpaceLeft-SpaceRight
         }
     };
     ///容器高
-    public   var containerViewHeight:CGFloat {
+    open   var containerViewHeight:CGFloat {
         get{
             return self.containerView.subviews.last!.bottom + SpaceBottonN
         }
     };
     ///容器
-    public  var containerView:UIView!
+    open  var containerView:UIView!
     
     
-    public var cellWidth:CGFloat = 0;
+    open var cellWidth:CGFloat = 0;
     ///上下左右间距， 最外层
-    public var SpaceLeft:CGFloat = 5;
-    public  var SpaceRight:CGFloat = 5;
-    public  var SpaceTop:CGFloat = 5;
-    public  var SpaceBottom:CGFloat = 5;
+    open var SpaceLeft:CGFloat = 5;
+    open  var SpaceRight:CGFloat = 5;
+    open  var SpaceTop:CGFloat = 5;
+    open  var SpaceBottom:CGFloat = 5;
     ///间距上下， 内层
     var SpaceBottonN:CGFloat = 5;
     
     
-    public  func InitSpace(left:CGFloat,right:CGFloat,Top:CGFloat,Bottom:CGFloat,lastSpace:CGFloat,cellWidth:CGFloat){
+    open  func InitSpace(left:CGFloat,right:CGFloat,Top:CGFloat,Bottom:CGFloat,lastSpace:CGFloat,cellWidth:CGFloat){
         self.cellWidth = cellWidth;
         ///上下左右间距， 最外层
         self.SpaceLeft = left;
@@ -37,23 +37,23 @@ public class BaseCVCell: UICollectionViewCell {
         ///间距上下， 内层
         self.SpaceBottonN = lastSpace;
     }
-    override public func CreateView() {
+    open override  func CreateView() {
         
     }
     
-    override public init(frame:CGRect){
+      override  init(frame:CGRect){
         super.init(frame: frame)
         CreateView()
         UpdateContainer();
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
         
     }
     
     //设置容器容器的大小，
-    public func UpdateContainer()
+    open func UpdateContainer()
     {
         UpdateViewFrame();
         self.contentView.frame = self.bounds
@@ -73,7 +73,7 @@ public class BaseCVCell: UICollectionViewCell {
     }
     
     
-    public func UpdateCellHeight<T>(cellWidth:CGFloat,data:T)->CGSize{
+    open func UpdateCellHeight<T>(cellWidth:CGFloat,data:T)->CGSize{
         UpdateData(cellWidth: cellWidth,data: data);
         //    UpdateFrame()
         if(self.containerView != nil){
@@ -90,13 +90,13 @@ public class BaseCVCell: UICollectionViewCell {
     }
     
     
-    public func UpdateViewFrame()
+    open func UpdateViewFrame()
     {
         
     }
     
     //MAKR:--数据
-    public func UpdateData<T>(cellWidth:CGFloat,data:T)
+    open func UpdateData<T>(cellWidth:CGFloat,data:T)
     {
         self.cellWidth = cellWidth;
         UpdateContainer()
