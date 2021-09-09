@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YFCollectionview<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource {
+public class CVView<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource {
     
     var tView:UICollectionView!
     private var cellID = "cell"
@@ -30,11 +30,11 @@ class YFCollectionview<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectio
    
 
     //
-    init() {
+    public  init() {
         super.init(frame: CGRect.zero)
         
     }
-    init(cellHeight:@escaping CallBackTwoReturn<UICollectionView,IndexPath,CGSize>,
+    public  init(cellHeight:@escaping CallBackTwoReturn<UICollectionView,IndexPath,CGSize>,
          bindCell:@escaping (CallBackTwoReturn<UICollectionView,IndexPath,UICollectionViewCell>),
          cellSections:@escaping (CallBackOneReturn<UICollectionView,Int>),
          cellRow:@escaping (CallBackTwoReturn<UICollectionView,Int,Int>),
@@ -59,7 +59,7 @@ class YFCollectionview<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectio
     
     
     //
-    func CreateCollectionView()
+    public   func CreateCollectionView()
     {
         let layout = UICollectionViewFlowLayout();
         layout.minimumLineSpacing = 5;
@@ -87,30 +87,30 @@ class YFCollectionview<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectio
         //
     }
     
-    func UpdateFrame(){
+    public  func UpdateFrame(){
         
         self.tView.frame = self.bounds;
     }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return cellSections(collectionView)
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellRow(collectionView,section)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //        var cell = collectionView.dequeueConfiguredReusableSupplementary(using: T.self, for: indexPath)
         
         return cellCall(collectionView,indexPath);
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
          cellSelected(collectionView,indexPath)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         //   self.tView.contentSize = CGSize(width: 414, height: 500)
         if(cellHeightCall != nil){
@@ -123,25 +123,25 @@ class YFCollectionview<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectio
         
     }
     ///重置数据
-    func ResetData(list:[T]){
+    public func ResetData(list:[T]){
         self.dataList.removeAll()
         self.cellHeightDic.removeAll()
         self.dataList.append(contentsOf: list)
         self.tView.reloadData()
     }
     ///添加数据
-    func AddData(list:[T]){
+    public func AddData(list:[T]){
         self.dataList.append(contentsOf: list)
         self.tView.reloadData()
     }
     ///移除
-    func RemoveAll(){
+    public func RemoveAll(){
         self.dataList.removeAll()
         self.tView.reloadData()
     }
     
     ///移除某一个
-    func RemoveRow(row:Int){
+    public func RemoveRow(row:Int){
         for i in (0 ..< dataList.count).reversed() {
             if(i == row){
                 dataList.remove(at: i)
@@ -150,15 +150,15 @@ class YFCollectionview<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectio
         self.tView.reloadData()
     }
     ///
-    func List(row : Int) -> T{
+    public  func List(row : Int) -> T{
         return dataList[row]
     }
-    func ReloadData(){
+    public  func ReloadData(){
         self.tView.reloadData()
     }
     
     ///设置流逝布局
-    func Setlayout(lineSpace:CGFloat,itemSpace:CGFloat,column:Int,layoutType:LayoutType = LayoutType.MinHeightLayout){
+    public func Setlayout(lineSpace:CGFloat,itemSpace:CGFloat,column:Int,layoutType:LayoutType = LayoutType.MinHeightLayout){
 
             let layout = CVLayout(layoutType: layoutType);
             layout.minimumLineSpacing = lineSpace;

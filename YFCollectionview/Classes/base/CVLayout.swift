@@ -1,6 +1,6 @@
 
 import UIKit
-enum LayoutType {
+public enum LayoutType {
     ///从左到右依次
     case LeftLayout
     ///最小高布局方式
@@ -8,7 +8,7 @@ enum LayoutType {
 
 }
 
-class CVLayout: UICollectionViewFlowLayout {
+ class CVLayout: UICollectionViewFlowLayout {
     var maxHeight:CGFloat = 0;//
     var maxColumn:Int = 0;
     var list = [Int:CGSize]()

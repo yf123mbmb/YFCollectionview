@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     
     
-    var tView : YFCollectionview<ListData>!;
+    var tView : CVView<ListData>!;
     func CreateTableView()
     {
         //创建Tableview
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         //
         let space = cellItemLineSpace * (column-1)
         let cellWidth:CGFloat = (superViewWidth-space-tViewLeftSpace-tViewRightSpace)/column;
-        self.tView = (YFCollectionview<ListData>(cellHeight: { cv, ip in
+        self.tView = (CVView<ListData>(cellHeight: { cv, ip in
             let myCell : home2Cell = cv.dequeueReusableCell(withReuseIdentifier: cellID, for: ip) as! home2Cell
             let model:ListData = self.tView.List(row:ip.row)
             let h:CGSize =  myCell.UpdateCellHeight(cellWidth:(cellWidth),data: model)
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         }, cellSelected: { cv, ip in
             
         }).CreateView(superView: self.view, callback: { view in
-            let label = view as! YFCollectionview<ListData>
+            let label = view as! CVView<ListData>
             label.frame = CGRect(x: tViewLeftSpace, y: 200, width: superViewWidth-tViewLeftSpace-tViewRightSpace, height: 500)
             //注册
             label.tView.register(home2Cell.self, forCellWithReuseIdentifier: cellID)
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
 //            label.tView.mj_footer = footer;
 //            label.tView.mj_header = header;
             
-        })) as? YFCollectionview<ListData>
+        })) as? CVView<ListData>
     }
 
     func GetData()->[ListData]{

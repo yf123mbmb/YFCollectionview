@@ -9,7 +9,7 @@ import UIKit
 
 class LuYinVC: UIViewController {
     
-    var tView : YFCollectionview<ListData>!;
+    var tView : CVView<ListData>!;
     var loadBtn:UIButton!;
     
     
