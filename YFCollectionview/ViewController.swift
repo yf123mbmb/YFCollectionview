@@ -55,7 +55,7 @@ class ViewController: UIViewController {
             let label = view as! CVView<ListData>
             label.frame = CGRect(x: tViewLeftSpace, y: 200, width: superViewWidth-tViewLeftSpace-tViewRightSpace, height: 500)
             //注册
-            label.tView.register(home2Cell.self, forCellWithReuseIdentifier: cellID)
+            label.RegisterCell(home2Cell.self, forCellWithReuseIdentifier: cellID)
             //设置布局，方式
             label.Setlayout(lineSpace: cellItemLineSpace, itemSpace: cellItemSpace,column: Int(column),layoutType: layoutType)
             label.backgroundColor = UIColor.red

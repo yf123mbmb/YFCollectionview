@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class CVView<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource {
+open class CVView<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource {
     
     var tView:UICollectionView!
     private var cellID = "cell"
@@ -21,7 +21,7 @@ public class CVView<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectionVi
     var cvLayout:CVLayout?
     public var cellHeightDic = [Int:CGSize]()
     private var dataList = [T]()
-   public var count:Int{
+    public var count:Int{
         get{
             return dataList.count
         }
@@ -53,7 +53,7 @@ public class CVView<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectionVi
         self.cellSelected = cellSelected;
     }
     
-    required init?(coder: NSCoder) {
+  public  required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -166,6 +166,10 @@ public class CVView<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectionVi
             self.cvLayout = layout
             self.cvLayout?.maxColumn = column;
             self.tView.collectionViewLayout = layout
+    }
+    public func RegisterCell(_ cellClass: AnyClass?, forCellWithReuseIdentifier identifier: String)
+    {
+        self.tView.register(cellClass, forCellWithReuseIdentifier: identifier)
     }
     
 //    override func collectionViewContentSize() -> CGSize {
