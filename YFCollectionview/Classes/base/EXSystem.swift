@@ -18,9 +18,9 @@ public typealias CallBackOneReturn<T1,T2> = (T1) -> (T2)
 
 //
 extension UIView{
-    @objc func CreateView(){};
+    @objc public func CreateView(){};
     ///创建uiview
-    func CreateView(bgColor:UIColor=UIColor.white,superView:UIView,callback:(UIView)->()) ->UIView
+    public  func CreateView(bgColor:UIColor=UIColor.white,superView:UIView,callback:(UIView)->()) ->UIView
     {
         let label = self;
         superView.addSubview(label);
@@ -30,7 +30,7 @@ extension UIView{
     }
     
     ///创建UILabel
-    func CreateLabel(text:String="",font:UIFont=UIFont.systemFont(ofSize: 14),textColor:UIColor=UIColor.white,textAlignment:NSTextAlignment = NSTextAlignment.left ,superView:UIView,callback:(UILabel)->()) ->UILabel
+    public  func CreateLabel(text:String="",font:UIFont=UIFont.systemFont(ofSize: 14),textColor:UIColor=UIColor.white,textAlignment:NSTextAlignment = NSTextAlignment.left ,superView:UIView,callback:(UILabel)->()) ->UILabel
     {
         let label = self as! UILabel;
         superView.addSubview(label);
@@ -43,7 +43,7 @@ extension UIView{
         return label
     }
     ///创建UIImage
-    func CreateImage(text:String="",superView:UIView,callback:(UIImageView)->()) ->UIImageView
+    public  func CreateImage(text:String="",superView:UIView,callback:(UIImageView)->()) ->UIImageView
     {
         let label = self as! UIImageView;
         superView.addSubview(label);
@@ -53,7 +53,7 @@ extension UIView{
     }
     
     ///创建Button
-    func CreateButton(text:String="",font:UIFont=UIFont.systemFont(ofSize: 14),textColor:UIColor=UIColor.white,bgColor:UIColor = UIColor.clear,bgImage:String,superView:UIView,callback:(UIButton)->(),callAction:@escaping (UIView)->()) ->UIButton
+    public  func CreateButton(text:String="",font:UIFont=UIFont.systemFont(ofSize: 14),textColor:UIColor=UIColor.white,bgColor:UIColor = UIColor.clear,bgImage:String,superView:UIView,callback:(UIButton)->(),callAction:@escaping (UIView)->()) ->UIButton
     {
         let label = self as! UIButton;
         superView.addSubview(label);
@@ -84,7 +84,7 @@ extension UIView{
     
     
     ///创建CreateTableView 需要rxswift
-    func CreateCollectionView(delegate:Any,bgColor:UIColor = UIColor.clear,superView:UIView,callback:(UICollectionView)->()) ->UICollectionView
+    public func CreateCollectionView(delegate:Any,bgColor:UIColor = UIColor.clear,superView:UIView,callback:(UICollectionView)->()) ->UICollectionView
     {
         let label = self as! UICollectionView;
         superView.addSubview(label);
@@ -100,18 +100,18 @@ extension UIView{
 }
 //VC
 extension UIViewController{
-    @objc func CreateView(){};
+    @objc public func CreateView(){};
     
     
 }
 //MARK:-添加按钮block点击
 let cmButtonAssociatedkey = UnsafeRawPointer.init(bitPattern: "cmButtonAssociatedkey".hashValue)
 extension UIButton {
-    func addAction(for controlEvents: UIControl.Event,action:@escaping (UIButton)->()) {
+    public  func addAction(for controlEvents: UIControl.Event,action:@escaping (UIButton)->()) {
         objc_setAssociatedObject(self, cmButtonAssociatedkey!, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         self.addTarget(self, action: #selector(cmButtonClick), for: controlEvents)
     }
-    func addAction(_ action:@escaping (UIButton)->()) {
+    public  func addAction(_ action:@escaping (UIButton)->()) {
         
         objc_setAssociatedObject(self, cmButtonAssociatedkey!, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         self.addTarget(self, action: #selector(cmButtonClick), for: .touchUpInside)
@@ -137,7 +137,7 @@ extension UIButton {
 extension UIView{
     
     //x position
-    var x : CGFloat{
+  public  var x : CGFloat{
         
         get {
             
@@ -156,7 +156,7 @@ extension UIView{
     
     
     //y position
-    var y : CGFloat{
+    public var y : CGFloat{
         
         get {
             
@@ -176,7 +176,7 @@ extension UIView{
     
     
     //height
-    var height : CGFloat{
+    public var height : CGFloat{
         
         get {
             
@@ -195,7 +195,7 @@ extension UIView{
     
     
     // width
-    var width : CGFloat {
+    public var width : CGFloat {
         
         get {
             
@@ -213,7 +213,7 @@ extension UIView{
     
     
     // left
-    var left : CGFloat {
+    public  var left : CGFloat {
         
         get {
             
@@ -228,7 +228,7 @@ extension UIView{
     
     
     // right
-    var right : CGFloat {
+    public   var right : CGFloat {
         
         get {
             
@@ -243,7 +243,7 @@ extension UIView{
     
     
     // top
-    var top : CGFloat {
+    public var top : CGFloat {
         
         get {
             
@@ -257,7 +257,7 @@ extension UIView{
     }
     
     // bottom
-    var bottom : CGFloat {
+    public var bottom : CGFloat {
         
         get {
             
@@ -271,7 +271,7 @@ extension UIView{
     }
     
     //centerX
-    var centerX : CGFloat {
+    public  var centerX : CGFloat {
         
         get {
             
@@ -285,7 +285,7 @@ extension UIView{
     }
     
     //centerY
-    var centerY : CGFloat {
+    public  var centerY : CGFloat {
         
         get {
             
@@ -298,7 +298,7 @@ extension UIView{
         }
     }
     //middleX
-    var middleX : CGFloat {
+    public var middleX : CGFloat {
         
         get {
             
@@ -307,7 +307,7 @@ extension UIView{
     }
     
     //middleY
-    var middleY : CGFloat {
+    public  var middleY : CGFloat {
         
         get {
             
@@ -316,7 +316,7 @@ extension UIView{
     }
     
     //middlePoint
-    var middlePoint : CGPoint {
+    public  var middlePoint : CGPoint {
         
         get {
             

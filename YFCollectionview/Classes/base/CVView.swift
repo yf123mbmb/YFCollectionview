@@ -21,7 +21,7 @@ public class CVView<T>: UIView,UICollectionViewDelegateFlowLayout,UICollectionVi
     var cvLayout:CVLayout?
     public var cellHeightDic = [Int:CGSize]()
     private var dataList = [T]()
-    var count:Int{
+   public var count:Int{
         get{
             return dataList.count
         }
