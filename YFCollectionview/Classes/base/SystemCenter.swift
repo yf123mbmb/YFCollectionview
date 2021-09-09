@@ -3,9 +3,9 @@ import UIKit
 import Foundation
 
 //获取当前版本号
-let CurrentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+public let CurrentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
 //获取历史版本号
-let SandboxVersion = UserDefaults.standard.object(forKey: "CFBundleShortVersionString") as? String ?? ""
+public let SandboxVersion = UserDefaults.standard.object(forKey: "CFBundleShortVersionString") as? String ?? ""
 //
 ////版本比较
 //if currentVersion.compare(sandboxVersion) == ComparisonResult.orderedDescending {
@@ -14,29 +14,29 @@ let SandboxVersion = UserDefaults.standard.object(forKey: "CFBundleShortVersionS
 //}
 
 //获取app信息
-let InfoDictionary : Dictionary = Bundle.main.infoDictionary!
+public let InfoDictionary : Dictionary = Bundle.main.infoDictionary!
 //程序名称
-let AppDisplayName : String = InfoDictionary["CFBundleDisplayName"] as! String
+public let AppDisplayName : String = InfoDictionary["CFBundleDisplayName"] as! String
 //版本号
-let MajorVersion :String = InfoDictionary ["CFBundleShortVersionString"] as! String
+public let MajorVersion :String = InfoDictionary ["CFBundleShortVersionString"] as! String
 //build号
-let minorVersion :String = InfoDictionary ["CFBundleVersion"] as! String
+public let minorVersion :String = InfoDictionary ["CFBundleVersion"] as! String
 
 //获取设备信息
 //ios版本
-let iOSVersion : NSString = UIDevice.current.systemVersion as NSString
+public let iOSVersion : NSString = UIDevice.current.systemVersion as NSString
 //设备udid
-let UDID  = UIDevice.current.identifierForVendor
+public let UDID  = UIDevice.current.identifierForVendor
 //设备名称
-let DeviceName : String = UIDevice.current.name
+public let DeviceName : String = UIDevice.current.name
 //系统名称
-let SystemName : String = UIDevice.current.systemName
+public let SystemName : String = UIDevice.current.systemName
 //设备型号
-let iOSModel = UIDevice.current.model
+public let iOSModel = UIDevice.current.model
 //设备区域化型号如A1533
-let LocalizedModel = UIDevice.current.localizedModel
+public let LocalizedModel = UIDevice.current.localizedModel
 ///data转字典
-func DataToDictionary(data:Data) ->Dictionary<String, Any>?{
+public func DataToDictionary(data:Data) ->Dictionary<String, Any>?{
     
     do{
         let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
@@ -54,7 +54,7 @@ func DataToDictionary(data:Data) ->Dictionary<String, Any>?{
 }
 
 //Debug模式下打印
-func PrintLog<T>(message: T, fileName: String = #file, funcName: String = #function, lineNum : Int = #line) {
+public func PrintLog<T>(message: T, fileName: String = #file, funcName: String = #function, lineNum : Int = #line) {
     #if DEBUG
     // 1.对文件进行处理
     let file = (fileName as NSString).lastPathComponent
@@ -63,7 +63,7 @@ func PrintLog<T>(message: T, fileName: String = #file, funcName: String = #funct
     #endif
 }
 ///延时
-func Delay(time:Double,callBack:@escaping ()->()){
+public func Delay(time:Double,callBack:@escaping ()->()){
     //延时 0.5s 执行
     DispatchQueue.global().asyncAfter(deadline: DispatchTime.now()+time) {
         //此时处于主队列中

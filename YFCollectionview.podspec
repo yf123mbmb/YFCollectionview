@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YFCollectionview'
-  s.version          = '0.0.3'
+  s.version          = '0.0.4'
   s.summary          = '自适应列表高和爆布流'
 
 # This description is used to generate tags and improve search results.
